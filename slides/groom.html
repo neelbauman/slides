@@ -8,7 +8,7 @@
 
 		<link rel="stylesheet" href="../dist/reset.css">
 		<link rel="stylesheet" href="../dist/reveal.css">
-		<link rel="stylesheet" href="../dist/theme/black.css">
+		<link rel="stylesheet" href="../dist/theme/moon.css">
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="../plugin/highlight/monokai.css">
@@ -17,11 +17,110 @@
 		<div class="reveal">
 			<div class="slides">
 				<section>
-					<h1>GROOM</h1>
-					<small>modius operandi with org-mode</small>
+					<h2>仕事術・ルーチン発表会</h2>
+					<p>野口裕一郎</p>
 				</section>
+				<section>
+				<!-- <p>仕事術紹介</p> -->
+					<section>
+						<h2>GROOM</h2>
+						<p>modius operandi with org-mode</p>
+					</section>
+					<section>
+						<h2>modius operandi</h2>
+						<p>ラテン語：仕事などのやり方、物事の作用の仕方</p>
+						<small>英辞郎 on the webより</small>
+					</section>
+					<section>
+						<h2>使用ツール</h2>
+						<ul>
+							<li>org-mode</li>
+							<li>git</li>
+							<li>shell script</li>
+						</ul>
+					</section>
+					<section>
+						<h2>org-modeとは？</h2>
+						<blockquote cite="https://orgmode.org/manual/Summary.html">Org Mode is an authoring tool and a TODO lists manager for GNU Emacs. It relies on a lightweight plain-text markup language used in files with the ‘.org’ extension.</blockquote>
+						<small>Org Mode Mannual 1.1 Summary より</small>
+					</section>
+					<section>
+						<h2>gitとは？</h2>
+						<blockquote cite="https://git-scm.com/book/ja/v2/%E4%BD%BF%E3%81%84%E5%A7%8B%E3%82%81%E3%82%8B-Git%E7%95%A5%E5%8F%B2">スピード, シンプルな設計, ノンリニア開発(数千の並列ブランチ)への強力なサポート ,完全な分散 , Linux カーネルのような大規模プロジェクトを(スピードとデータサイズで)効率的に取り扱い可能</blockquote>
+						<p>などの特徴をもつDVCS</p>
+						<small>Git Book 1.2 使い始め-Git略史 より</small>
+					</section>
+					<section>
+						<h2>shell scriptとは？</h2>
+						<blockquote cite="https://ja.wikipedia.org/wiki/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88">シェルスクリプト (英語: shell script) は主にオペレーティングシステムのシェルまたはコマンドラインインタプリタから実行可能なコマンドの一連の流れをファイルにして再利用できるようにしたものである。狭義では、Unixシェルで用いられるスクリプト言語を指す。</blockquote>
+						<small>Wikipediaより</small>
+					</section>
+				</section>
+				<section>
+				<!-- <span>やろうと思った理由</span> -->
+					<section>
+						<h2>欲しかったもの</h2>
+						<ul>
+							<li class="fragment">ローカル性</li>
+							<li class="fragment">柔軟性</li>
+							<li class="fragment">操作性</li>
+						</ul>
+					</section>
+					<section>
 
-				<section>Slide 2</section>
+						<p>これらの条件から</p>
+						<ul>
+							<li class="fragment">テキストファイルベースで</li>
+							<li class="fragment">gitで管理しながら</li>
+							<li class="fragment">shell scriptで簡単に扱える</li>
+						</ul>
+						<p class="fragment">ワークフローを構築しよう!</p>
+					</section>
+				</section>
+				<section>
+				<!-- <span>その成果はどうだったか</span> -->
+					<section>
+						<h2>成果</h2>
+					</section>
+					<section data-auto-animate>
+						<h2 data-id="code-title">groomの構築!</h2>
+						<pre data-id="code-animation"><code class="hljs org" data-trim data-line-numbers>
+						** 作業したいtopicをcheckoutする（トピックAとする）
+						** masterにrebaseする
+						** トピックAで作業する
+						** トピックAでの編集をcommitする
+						** masterをcheckout
+						** トピックAとmasterのdiffからpatchを作る
+						** patchを編集してmasterに取り込みたい部分だけをapply
+						** masterをcommitする
+						** 作業したいtopicを選ぶ</code></pre>
+					</section>
+					<section data-auto-animate>
+						<h2 data-id="code-title">groomの運用!</h2>
+						<img class="r-frame" data-src="../img/groom.png" alt=""/>
+					</section>
+					<section>
+						<h2>副産物</h2>
+						<ul>
+							<li>org-modeでできること</li>
+							<li>emacsというエディタについて</li>
+							<li>gitの理解が深まる</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+				<!-- <span>こんな方におすすめします</span> -->
+					<p class="fragment">枯れた技術を使ってみたい</p>
+					<p class="fragment">優れたデザインや技術思想が好き</p>
+					<p class="fragment">マウスやトラックパッドにできるだけ触りたくない</p>
+					<p class="fragment">みたいな方におすすめです。</p>
+				</section>
+				<section>
+					<h2>HERE IS EOF</h2>
+					<p>coded with vim,</p>
+					<p>powered by reveal.js,</p>
+					<p>and hosted at github.io</p>
+				</section>
 			</div>
 		</div>
 
