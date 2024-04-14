@@ -29,7 +29,7 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h3>数学知識抽出のための第一歩</h3>
+					<h3>Webベースのセマンティクス理解<br>PoCに向けて#1</h3>
 					<p>
 						<small>野口裕一郎</small>
 					</p>
@@ -73,14 +73,209 @@
 						</aside>
 					</section>
 				</section>
-				<section></section>
 				<section>
-					<h2>背景、目的、現時点でできること、もしもっと開発が進んだら（5min）</h2>
-				</section>
-				<section>
-					<h2>使用技術、設計と構成（5min）</h2>
-				</section>
+					<section>
+					<h2>目的</h2>
+					</section>
+					<section>
+						<h2>Webに蓄えられた<br>ドキュメントから<br>知識を抽出する</h2>
+						<aside class="notes">
+							HTML+HTTPで構成されるドキュメント群があったとき、
+							その構造を生かして知識の抽象化をしたい。
 
+							人間がドキュメントを生成するとき、機械に理解してもらうことを
+							意識しながら記述することは容易でない。
+
+							したがって、整合性の観点からも極めて保守が難しくなる。
+
+							セマンティックWebが目指すところに追随していく。
+
+							セマンティクスが staticな構造 を記述するとすれば、
+							文書の中に現れるということは一つの 現象としてのdynamics を表す。
+							その dynamics をどう理解するか。
+							まずは dynamics の記述が必要。
+						</aside>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>なんの役に立つのか？</h2>
+					</section>
+					<section>
+						<p>
+						<ul>
+							<li>Web3.0,セマンティックWebの時代に向けてのデータ基盤整備</li>
+							<li>LLMアプリケーション(主にRAG)と生データとのミドルウェア</li>
+						</ul>
+						</p>
+					</section>
+					<section>
+						<h2>なぜWebか?</h2>
+					</section>
+					<section>
+						<aside class="notes">
+							Webの特徴的な点で喜ばしい側面
+							<ol>
+								<li>とても広く普及している</li>
+								<li>極めて柔軟な表現能力（複雑な情報を組み合せられる）</li>
+								<li>例：
+									Notion, Slackなど、Webベースのアプリケーションはたくさんある。
+								</li>
+
+								<li>人間可読かつ機械可読な論理構造表現（マークアップ）
+								<ol>
+									<li>極めて大きい論理構造情報がかなり明示的な形で含まれる</li>
+									<li>ほとんどアノテーションみたいなもの</li>
+									<li>HTMLで表現される論理構造を保持するようなしかたで要約ができればとても嬉しい</li>
+									<li>そして、この論理構造は、コンポーネント間のセマンティクスを再構築するものとして再帰的に機能する</li>
+									<li></li>
+								</ol>
+								</li>
+								<li>リンク構造によって、
+									ドキュメント内だけでなく、
+									ドキュメント同士のセマンティクスについての情報を
+									持つことができる。 
+								</li>
+							</ol>
+							HTML+HTTPの悩ましい点
+							<ol>
+								<li>マークアップのセマンティクスについて
+									厳密なルールが無いため、
+									作り手が異なればマークアップの規則も
+									階層の作り方も異なる。
+								</li>
+								<li>例:
+									異なるドメインのページをクローリングしよう
+									としたら、いちいちそのページのタグ構造を見て、
+									欲しい情報に到達するまで辿るべき
+									マークアップツリーを調べなければならない。
+								</li>
+								<li>CSS, Javascriptなどにより生成される
+									ビジュアルやインタラクションを前提とした
+									セマンティクス情報が多分に含まれる。
+								</li>
+								<li>
+									また、人間可読性の観点からでなく、CSSやDOM操作の観点から
+									冗長で複雑なマークアップも存在する。
+								</li>
+								<li>
+									完全な意味情報を受け取るには
+									もはやHTMLテキストのReadingだけでは不十分で、
+									ビジュアルやインタラクションを含めて
+									Webを体験する必要がある。
+								</li>
+							</ol>
+						</aside>
+						<h2>なぜWebか?</h2>
+						<p>
+							<ol>
+								<li>柔軟なマークアップと情報表現能力</li>
+								<li>リンクによる文書間の関連</li>
+								<li>広く普及し、応用されている形式</li>
+							</ol>
+						</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>全体構想</h2>
+					</section>
+					<section>
+						<h2>基本的な発想</h2>
+						<p>ドキュメントの論理構造はセマンティックに規制されているし、逆にセマンティックな内容はドキュメントの内容によって生成される。</p>
+					</section>
+					<section>
+						<aside class="notes">
+						ドキュメントの論理構造を理解する。
+						<br>
+						つまり、
+						このドキュメントは、何を出発点にして何を結論しようとしているのか、
+						<br>
+						あるいは、どういう情報を基礎として、どういうことを伝えようとしているのか
+						<br>
+						というフローがドキュメントにはある。
+						<br>
+						そして、HTMLのマークアップは、まさにそのフローを構築するもの。
+						</aside>
+					</section>
+				</section>
+				<section>
+					<section>
+						<aside class="notes">
+							現時点
+						</aside>
+						<h2>現時点でできること</h2>
+						<p>
+							<ol>
+								<li>Webのリンク構造可視化</li>
+								<li>ページに含まれるテキストの固有表現認識</li>
+							</ol>
+						</p>
+					</section>
+					<section>
+						<aside class="notes">
+							現時点
+						</aside>
+						<h3>Webのリンク構造可視化</h3>
+					</section>
+					<section>
+						<ul>
+							<li>指定したドメインをクローリング</li>
+							<li>リンクを辿りながらそのフットプリントを記録</li>
+						</ul>
+					</section>
+					<section>
+						<h2>固有表現認識</h2>
+					</section>
+					<section>
+						<ul>
+							<li>テキストを取り出し、文書の構成要素をラベリングしていく</li>
+							<li>HuggingFace社のサービスで提供されている日本語LLMをファインチューニング</li>
+						</ul>
+					</section>
+					<section>
+						<h2></h2>
+					</section>
+				</section>
+				<section>
+					<section>
+						<aside class="notes">
+							これからの開発
+						</aside>
+						<h2>これからのこと</h2>
+					</section>
+				</section>
+				<section>
+					<h3>ご清聴ありがとうございました。</h3>
+
+					<p><small>written with vim &amp; emmet, slideshow powered by reveal.js</small></p>
+					<p><small>hosted by Github Pages</small></p>
+
+				</section>
+				<section>
+					<h2>補足資料（使用技術、設計と構成（5min））</h2>
+				</section>
+				<section>
+					<section>
+						<h1>HTML+HTTP</h1>
+					</section>
+					<section>
+						<aside class="notes">
+							HTML+HTTPとは？
+						</aside>
+						<p>
+						現在のWebの基盤技術の一つ。
+						</p>
+						<dl>
+							<dt>HTML</dt>
+							<dd>Hyper Text Markup Language</dd>
+						</dl>
+						<dl>
+							<dt>HTTP</dt>
+							<dd>Hyper Text Transfer Protocol</dd>
+						</dl>
+					</section>
+				</section>
 
 				<!-- Example of nested vertical slides -->
 				<section>
