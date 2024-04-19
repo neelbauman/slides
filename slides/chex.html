@@ -447,27 +447,14 @@ l4: QUEUE:156 https://old.math.jp/wiki/%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%9A%E3%8
 							<pre>
 							  %%{init: {'theme': 'dark', 'themeVariables': { 'darkMode': true }}}%%
 							  flowchart LR
-								A[クローラ] -- リクエスト--> B{Is it?};
-								B -- Yes --> C[OK];
-								C --> D[Rethink];
-								D --> B;
-								B -- No ----> E[End];
+								A[リクエスト] --> B[リンクの抽出];
+								B -- ハンドラにわたす --> C{URLパターンマッチング?};
+								C -- YES--> D{既往?};
+								C -- NO --> E[リジェクト];
+								D -- YES --> E;
+								D -- No --> F[waitlist queueへ追加];
 							</pre>
 						</div>
-					</section>
-					<section>
-						<h3>リンク抽出のロジック</h3>
-						<div class="mermaid">
-							<pre></pre>
-						</div>
-					</section>
-					<section data-auto-animate="">
-						<h3 class="" data-id="code-title">URL Screenのロジック</h3>
-						<pre data-id="code-animation">
-							<code class="python" data-line-numbers="" data-trim=""><script type="text/template">
-									
-							</script></code>
-						</pre>
 					</section>
 					<section data-auto-animate>
 						<h3 class="" data-id="code-title">waitlistの更新ロジック</h3>
