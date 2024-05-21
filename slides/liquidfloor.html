@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>LIQUID FLOOR</title>
+		<link rel="stylesheet" href="../dist/reset.css">
+
+	</head>
+	<body>
+		<!-- Div to draw the effect on -->
+		<div class="my-div" style="width:100%; height:100vh">
+		</div>
+		<div style="background-color: rgba(255, 255, 128, 0.0); width:100%; height:100vh;">
+			<img src="./imgs/liquidfloor_1line.png" style="width:50%" alt="">
+		</div>
+
+		<!-- library needed -->
+		<script src="../dist/js/three.min.js"></script>
+
+		<script src="../dist/js/gsap.min.js"></script>
+		<script src="../dist/ripple-effect.min.js"></script>
+		<script>
+			var ripple = new RippleEffect({
+				parent: document.querySelector('.my-div'),
+				intensity: 4,
+				strength: 2,
+				area: 4,
+				waveSpeed: 0.001,
+				speedIn: 3,
+				speedOut: 1,
+				easing: 'Expo.easeInOut',
+				hover: false,
+				texture: './imgs/liquidfloor_strange_repeat.png',
+			});
+			ripple.stop()
+						
+			const timer = setTimeout(ripple.start(), 5000)
+			clearTimeout(timer)
+		</script>
+	</body>
+</html>
